@@ -1,15 +1,14 @@
 import React from 'react'
-import CourseTable from "./course-table";
-import CourseGrid from "./course-grid";
-import CourseEditor from "./course-editor";
+import CourseTable from './course-table'
+import CourseGrid from './course-grid'
+import CourseEditor from './course-editor'
+import CourseForm from './course-form'
 
 class CourseManager extends React.Component {
     state = {
         courses: [
-            {title: "CS4321", owner: "frank", lastModified: "2/9/15"},
-            {title: "CS5432", owner: "greg", lastModified: "3/8/25"},
-            {title: "CS6543", owner: "herbert", lastModified: "4/7/35"},
-            {title: "CS7654", owner: "ian", lastModified: "5/6/45"},
+            { title: "CS5610", owner: "alice", lastModified: "1/1/2021" },
+            { title: "CS5008", owner: "bob", lastModified: "1/2/2021" },
         ]
     }
 
@@ -19,22 +18,21 @@ class CourseManager extends React.Component {
             owner: "New Owner",
             lastModified: "Never"
         }
-        this.state.courses.push(newCourse)
+        this.state.courses.push(newCourse);
         this.setState(this.state)
     }
 
-    deleteCourse = (courseToDelete) => {
-        const newCourses = this.state.courses
-            .filter(course => course !== courseToDelete)
-        this.setState({
-            courses: newCourses
-        })
+    deleteCourse = (deletedCourse) => {
+        //console.log(course)
+        const newCourses = this.state.courses.filter(course => course != deletedCourse)
+        this.setState(this.state.courses = newCourses)
     }
 
-    render() {
-        return(
+    render(){
+        return (
             <div>
                 <h1>Course Manager</h1>
+                <CourseForm/>
                 <button onClick={this.addCourse}>Add Course</button>
                 <CourseTable deleteCourse={this.deleteCourse} courses={this.state.courses}/>
                 <CourseGrid deleteCourse={this.deleteCourse} courses={this.state.courses}/>
@@ -43,5 +41,9 @@ class CourseManager extends React.Component {
         )
     }
 }
+
+
+
+
 
 export default CourseManager

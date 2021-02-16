@@ -1,5 +1,5 @@
 import React from 'react'
-import CourseCard from "./course-card";
+import CourseCard from './course-card'
 
 const CourseGrid = ({courses}) =>
     <div>
@@ -12,5 +12,9 @@ const CourseGrid = ({courses}) =>
             }
         </div>
     </div>
+
+
+
+
 
 export default CourseGrid

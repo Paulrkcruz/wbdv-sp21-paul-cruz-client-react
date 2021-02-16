@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CourseRow = ({deleteCourse, course, lastModified, title, owner}) =>
+const CourseRow = ({course, deleteCourse, title, owner, lastModified}) =>
     <tr>
         <td>{title}</td>
         <td>{owner}</td>
