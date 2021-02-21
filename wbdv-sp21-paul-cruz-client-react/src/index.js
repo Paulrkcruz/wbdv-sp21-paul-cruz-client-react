@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css';
 import App from './App';
-import Hello from "./Hello";
-import HelloClass from "./hello-class";
+// import Hello from "./Hello";
+// import HelloClass from "./hello-class";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <App/>,
+    // <div>
+    //     <Hello/>
+    //     <HelloClass/>
+    // </div>
+    // <React.StrictMode>
+    <App />,
+    // </React.StrictMode>,
     document.getElementById('root')
 );
 

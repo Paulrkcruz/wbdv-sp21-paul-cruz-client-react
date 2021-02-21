@@ -1,34 +1,87 @@
-import React from "react";
+import React from 'react'
 import CourseRow from "./course-row";
+import {Link} from "react-router-dom";
+
 
 export default class CourseTable extends React.Component {
-
     constructor(props) {
-        super(props)
+        super(props);
     }
 
-
+    // add course function, and move to it's parent
+    // addCourse = () => {
+    //     const newCourse = {
+    //         title: "New Course",
+    //         owner: "New Owner",
+    //         lastModified: "Never"
+    //     }
+    //     this.state.courses.push(newCourse)
+    //     this.setState(this.state)
+    // }
 
     render() {
-        return (
+        return(
             <div>
-                <h2>Course Table</h2>
+                {/*<button onClick={this.addCourse}>Add Course</button>*/}
+                <Link to="/courses/grid">
+                    <i className="fas fa-2x fa-th float-right"></i>
+                </Link>
+                <h2 style={{color: "blue"}}>Course Table</h2>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>
+                            <select name="choice">
+                                <option value="first" selected>Owned by</option>
+                                <option value="second">me</option>
+                            </select>
+                        </th>
+                        <th>Last modified by me</th>
+                        <th><i className="fas fa-folder fa-lg"></i></th>
+                        <th><i className="fas fa-th fa-lg"></i></th>
+                        <th><i className="fas fa-sort-alpha-down fa-lg"></i></th>
+                    </tr>
+                    </thead>
+                    {/*<CourseRow title="CS1234" owner="Alice" lastModified={"1/1/2021"}/>*/}
+                    {/*<CourseRow title="CS2345" owner="Charlies" lastModified={"1/8/2021"}/>*/}
+                    {/*<CourseRow title="CS3456" owner="James" lastModified={"1/12/2021"}/>*/}
+                    {/*<CourseRow title="CS4567" owner="Dan" lastModified={"1/17/2021"}/>*/}
+                    {
+                        this.props.courses.map((course, ndx) =>
+                            <CourseRow
+                                updateCourse={this.props.updateCourse}
+                                deleteCourse={this.props.deleteCourse}
+                                key={ndx} //add anything unique
+                                course={course}
+                                title={course.title}
+                                owner={course.owner}
+                                lastModified={course.lastModified}
+                            />)
+                    }
+                    {/*<tr>*/}
+                    {/*    <td>CS5610</td>*/}
+                    {/*    <td>me</td>*/}
+                    {/*    <td>1/1/2021</td>*/}
+                    {/*    <td>*/}
+                    {/*        <i className="fas fa-check"></i>*/}
+                    {/*        <i className="fas fa-trash"></i>*/}
+                    {/*        <i className="fas fa-edit"></i>*/}
+                    {/*    </td>*/}
+                    {/*</tr>*/}
+                    {/*<tr>*/}
+                    {/*    <td>CS3200</td>*/}
+                    {/*    <td>you</td>*/}
+                    {/*    <td>1/21/2021</td>*/}
+                    {/*    <td>*/}
+                    {/*        <i className="fas fa-check"></i>*/}
+                    {/*        <i className="fas fa-trash"></i>*/}
+                    {/*        <i className="fas fa-edit"></i>*/}
+                    {/*    </td>*/}
+                    {/*</tr>*/}
 
-                <table className="table">
-                    <tbody>
-                    {this.props.courses.map((course, ndx) => (
-                        <CourseRow
-                            deleteCourse={this.props.deleteCourse}
-                            course={course}
-                            key={ndx}
-                            title={course.title}
-                            owner={course.owner}
-                            lastModified={course.lastModified}
-                        />
-                    ))}
-                    </tbody>
                 </table>
             </div>
-        );
+        )
     }
 }
