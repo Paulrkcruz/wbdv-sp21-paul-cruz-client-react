@@ -1,4 +1,4 @@
-const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/cruzp/usersnpm"
+const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/cruzp/courses"
 
 
 export const createCourse = (course) =>
