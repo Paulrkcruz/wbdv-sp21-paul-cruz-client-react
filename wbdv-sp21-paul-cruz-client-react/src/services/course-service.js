@@ -2,14 +2,14 @@ const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/cruzp/courses
 
 
 export const createCourse = (course) =>
-    fetch(COURSES_URL, {
-        method: 'POST',
-        body: JSON.stringify(course),
-        headers: {
-            'content-type': 'application/json'
-        }
-    })
-        .then(response => response.json())
+        fetch(COURSES_URL, {
+            method: 'POST',
+            body: JSON.stringify(course),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => response.json())
 
 
 export const findAllCourses = () =>
@@ -22,11 +22,11 @@ export const findCourseById = (courseId) => {}
 
 export const updateCourse = (courseId, course) =>
     fetch(`${COURSES_URL}/${courseId}`, {
-        method: 'PUT',
-        body: JSON.stringify(course),
-        headers: {
-            'content-type': 'application/json'
-        }
+            method: 'PUT',
+            body: JSON.stringify(course),
+            headers: {
+                'content-type': 'application/json'
+            }
     })
         .then(response => response.json())
 
@@ -38,14 +38,14 @@ export const deleteCourse = (courseId) =>
 
 
 export default {
-    // findAllCourses: findAllCourses,
-    // deleteCourse: deleteCourse,
-    // createCourse: createCourse,
-    // findCourseById: findCourseById,
-    // updateCourse: updateCourse,
-    findAllCourses,
-    deleteCourse,
-    createCourse,
-    findCourseById,
-    updateCourse,
+        // findAllCourses: findAllCourses,
+        // deleteCourse: deleteCourse,
+        // createCourse: createCourse,
+        // findCourseById: findCourseById,
+        // updateCourse: updateCourse,
+        findAllCourses,
+        deleteCourse,
+        createCourse,
+        findCourseById,
+        updateCourse,
 }

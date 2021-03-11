@@ -9,7 +9,7 @@ const CourseCard = ({course}) =>
             <div className="card-body">
                 <h5 className="card-title">{course.title}</h5>
                 <p className="card-text">Description of {course.title}</p>
-                <Link to="/courses/editor" className="btn btn-primary">{course.title}</Link>
+                <Link to={`/courses/:layout/edit/${course._id}`} className="btn btn-primary">{course.title}</Link>
                 <i className="fas fa-check fa-lg"></i>
                 <i className="fas fa-trash fa-lg"></i>
                 <i className="fas fa-edit fa-lg"></i>

@@ -1,36 +1,36 @@
-const lessonUrl = "https://wbdv-generic-server.herokuapp.com/api/cruzp/lessons"
-const topicUrl = "https://wbdv-generic-server.herokuapp.com/api/cruzp/topics"
+const LESSONS_URL = "https://wbdv-generic-server.herokuapp.com/api/cruzp/lessons"
+const TOPICS_URL = "https://wbdv-generic-server.herokuapp.com/api/cruzp/topics"
 
 export const findTopicsForLesson = (lessonId) =>
-    fetch(`${lessonUrl}/${lessonId}/topics`)
+    fetch(`${LESSONS_URL}/${lessonId}/topics`)
         .then(response => response.json())
 
-export const createTopicForLesson = (lessonId, topic) =>
-    fetch(`${lessonUrl}/${lessonId}/topics`, {
+export const creatTopicForLesson = (lessonId, topic) =>
+    fetch(`${LESSONS_URL}/${lessonId}/topics`, {
         method: "POST",
         body: JSON.stringify(topic),
         headers: {
-            "content-type": "application/json"
+            'content-type': 'application/json'
         }
-    }).then(response => response.json())
+    })
+        .then(response => response.json())
 
 export const updateTopic = (topicId, topic) =>
-    fetch(`${topicUrl}/${topicId}`, {
+    fetch(`${TOPICS_URL}/${topicId}`, {
         method: "PUT",
         body: JSON.stringify(topic),
         headers: {
-            "content-type": "application/json"
+            'content-type': 'application/json'
         }
-    }).then(response => response.json())
+    })
+        .then(response => response.json())
 
 export const deleteTopic = (topicId) =>
-    fetch(`${topicUrl}/${topicId}`, {
+    fetch(`${TOPICS_URL}/${topicId}`, {
         method: "DELETE"
-    }).then(response => response.json())
+    })
+        .then(response => response.json())
 
 export default {
-    findTopicsForLesson,
-    createTopicForLesson,
-    updateTopic,
-    deleteTopic
+    findTopicsForLesson, creatTopicForLesson, deleteTopic, updateTopic
 }

@@ -89,7 +89,7 @@ class CourseManager extends React.Component {
 
     render() {
         return (
-            <div class="container">
+            <div className="container">
                 <div className="wbdv-sticky-nav-bar row">
                     <div className="col-1">
                         <i className="fas fa-bars fa-2x"></i>
@@ -118,9 +118,16 @@ class CourseManager extends React.Component {
                 {/*<Route path="/courses/editor">*/}
                 {/*    <CourseEditor/>*/}
                 {/*</Route>*/}
-                <Route path="/courses/editor"
-                       render={(props) => <CourseEditor props={props}/> }>
-
+                <Route path={[
+                    "/courses/:layout/edit/",
+                    "/courses/:layout/edit/:courseId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"
+                ]}
+                       exact={true}
+                       render={(props) =>
+                           <CourseEditor {...props}/> }>
                 </Route>
             </div>
         );

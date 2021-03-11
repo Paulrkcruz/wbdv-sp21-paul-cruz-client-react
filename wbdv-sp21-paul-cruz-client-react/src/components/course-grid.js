@@ -12,8 +12,10 @@ const CourseGrid = ({courses}) =>
         <div className="row">
             {
                 courses.map(course =>
-                    <CourseCard course={course}/>
-                )
+                        <CourseCard
+                            key={course._id}
+                            course={course}/>
+                        )
             }
         </div>
     </div>

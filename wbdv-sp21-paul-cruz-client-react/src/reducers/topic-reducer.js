@@ -1,42 +1,50 @@
 const initialState = {
-    topics: []
-};
+    topics: [
+        // {_id: "123", title: "Topic 11"},
+        // {_id: "456", title: "Topic 22"},
+        // {_id: "789", title: "Topic 33"}
+    ]
+}
 
-export const TopicReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "FIND_TOPICS_FOR_LESSON":
-            return {
-                ...state,
-                topics: action.topics,
-                lessonId: action.lessonId
-            }
+const topicReducer = (state=initialState, action) => {
+    switch (action.type){
         case "DELETE_TOPIC":
+        const state1 = {
+            topics: state.topics.filter(topic => {
+                if (topic._id === action.topicToDelete._id) {
+                    return false
+                } else {
+                    return true
+                }
+            })
+        }
+        return state1
+        case "UPDATE_TOPIC":
             return {
-                ...state,
-                topics: state.topics.filter(topic => topic._id !== action.topicId)
+                topics: state.topics.map(t => {
+                    if (t._id === action.topic._id) {
+                        return action.topic
+                    } else {
+                        return t
+                    }
+                })
             }
         case "CREATE_TOPIC":
-            return {
-                ...state,
+            const newState = {
                 topics: [
                     ...state.topics,
                     action.topic
                 ]
             }
-        case "UPDATE_TOPIC":
+            return newState
+        case "FIND_TOPICS":
             return {
                 ...state,
-                topics: state.topics.map(
-                    topic => topic._id === action.topic._id ? action.topic : topic)
-            }
-        case "CLICK_ON_TOPIC":
-            return {
-                ...state,
-                currentTopicId: action.topicId
+                topics: action.topics
             }
         default:
             return state
     }
 }
 
-export default TopicReducer;
+export default topicReducer

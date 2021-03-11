@@ -1,42 +1,50 @@
 const initialState = {
-    lessons: []
-};
+    lessons: [
+        // {_id: "123", title: "Lesson 123"},
+        // {_id: "234", title: "Lesson 234"},
+        // {_id: "345", title: "Lesson 345"}
+    ]
+}
 
-export const LessonReducer = (state = initialState, action) => {
+const lessonReducer = (state=initialState, action) => {
     switch (action.type) {
+        case "DELETE_LESSON":
+            const newState = {
+                lessons: state.lessons.filter(lesson => {
+                    if (lesson._id === action.lessonToDelete._id) {
+                        return false
+                    } else {
+                        return true
+                    }
+                })
+            }
+            return newState
         case "UPDATE_LESSON":
             return {
-                ...state,
-                lessons: state.lessons.map(
-                    lesson => lesson._id === action.lesson._id ? action.lesson : lesson)
+                lessons: state.lessons.map(l => {
+                    if (l._id === action.lesson._id) {
+                        return action.lesson
+                    } else {
+                        return l
+                    }
+                })
             }
-        case "DELETE_LESSON":
-            return {
-                ...state,
-                lessons: state.lessons.filter(lesson => lesson._id !== action.lessonId)
-            }
-        case "FIND_LESSONS_FOR_MODULE":
-            return {
-                ...state,
-                lessons: action.lessons,
-                moduleId: action.moduleId
-            }
-        case "CREATE_LESSON_FOR_MODULE":
-            return {
+        case "CREATE_LESSON":
+            return  {
                 ...state,
                 lessons: [
                     ...state.lessons,
                     action.lesson
                 ]
             }
-        case "CLICK_ON_LESSON":
+        case "FIND_LESSONS":
             return {
                 ...state,
-                currentLessonId: action.lessonId
+                lessons: action.lessons
             }
         default:
             return state
     }
 }
 
-export default LessonReducer;
+export default lessonReducer
