@@ -7,24 +7,25 @@ import Home from "./components/home"
 
 
 function App() {
-  return (
-      <BrowserRouter>
-          <div className="container-fluid">
-              <Route path="/" exact={true} component={Home}/>
-              <Route path={["/courses/table", "/courses/grid"]} component={CourseManager}/>
-              {/*<CourseManager/>*/}
-              <Route path={[
-                  "/courses/:layout/edit/",
-                  "/courses/:layout/edit/:courseId",
-                  "/courses/:layout/edit/:courseId/modules/:moduleId",
-                  "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
-                  "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"
-              ]}
-                     exact={true}
-                     render={(props) => <CourseEditor {...props}/>}/>
-          </div>
-      </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <div className="container-fluid">
+                <Route path="/" exact={true} component={Home}/>
+                <Route path={["/courses/table", "/courses/grid"]} component={CourseManager}/>
+                {/*<CourseManager/>*/}
+                <Route path={[
+                    "/courses/:layout/edit/",
+                    "/courses/:layout/edit/:courseId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widget/:widgetId"
+                ]}
+                       exact={true}
+                       render={(props) => <CourseEditor {...props}/>}/>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;
