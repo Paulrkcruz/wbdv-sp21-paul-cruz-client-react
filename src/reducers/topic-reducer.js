@@ -1,3 +1,5 @@
+import {DELETE_TOPIC, UPDATE_TOPIC, CREATE_TOPIC, FIND_TOPICS} from "../actions/topic-actions";
+
 const initialState = {
     topics: [
         // {_id: "123", title: "Topic 11"},
@@ -8,7 +10,7 @@ const initialState = {
 
 const topicReducer = (state=initialState, action) => {
     switch (action.type){
-        case "DELETE_TOPIC":
+        case DELETE_TOPIC:
         const state1 = {
             topics: state.topics.filter(topic => {
                 if (topic._id === action.topicToDelete._id) {
@@ -18,8 +20,9 @@ const topicReducer = (state=initialState, action) => {
                 }
             })
         }
+
         return state1
-        case "UPDATE_TOPIC":
+        case UPDATE_TOPIC:
             return {
                 topics: state.topics.map(t => {
                     if (t._id === action.topic._id) {
@@ -29,7 +32,8 @@ const topicReducer = (state=initialState, action) => {
                     }
                 })
             }
-        case "CREATE_TOPIC":
+
+        case CREATE_TOPIC:
             const newState = {
                 topics: [
                     ...state.topics,
@@ -37,7 +41,8 @@ const topicReducer = (state=initialState, action) => {
                 ]
             }
             return newState
-        case "FIND_TOPICS":
+
+        case FIND_TOPICS:
             return {
                 ...state,
                 topics: action.topics
