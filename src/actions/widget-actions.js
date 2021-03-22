@@ -7,7 +7,7 @@ export const UPDATE_WIDGET = "UPDATE_WIDGET"
 export const FIND_WIDGETS = "FIND_WIDGETS"
 
 export const creatWidgetForTopic = (dispatch, topicId) => {
-    widgetService.creatWidgetForTopic(topicId, {title: "New Widget"})
+    widgetService.creatWidgetForTopic(topicId, {type: "HEADING", size: 2, text: "New Widget"})
         .then(widget => dispatch({
             type: CREATE_WIDGET,
             widget
@@ -27,8 +27,8 @@ export const updateWidget = (dispatch, widget) =>
             widget
         }))
 
-export const findWidgetsForTopic = (dispatch, topicId) => {
-    widgetService.findWidgetsForTopic(topicId)
+export const findWidgetsForTopic = (dispatch, tid) => {
+    widgetService.findWidgetsForTopic(tid)
         .then(widgets => dispatch({
             type: FIND_WIDGETS,
             widgets

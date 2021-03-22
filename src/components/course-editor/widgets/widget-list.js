@@ -9,7 +9,7 @@ import widgetActions from "../../../actions/widget-actions";
 
 const WidgetList = (
     {
-        myWidgets=[],
+        widgets=[],
         findWidgetsForTopic,
         creatWidgetForTopic,
         updateWidget,
@@ -19,16 +19,16 @@ const WidgetList = (
     //TODO: move state management to widget-reducer
     const {layout, courseId, moduleId, lessonId, topicId} = useParams()
     // const [widgets, setWidgets] = useState([])
-    const [widget, setWidget] =useState({})
+    const [widget, setWidget] = useState({})
 
     useEffect(() => {
         // //TODO: move server communication to widget-service
         // fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
         //     .then(response => response.json())
         //     .then(widgets => setWidgets(widgets))
-        if (topicId !== "undefined" && typeof topicId !== "undefined") {
-            findWidgetsForTopic(topicId)
-        }
+        // if (topicId !== "undefined" && typeof topicId !== "undefined") {
+        findWidgetsForTopic(topicId)
+        // }
     }, [topicId])
 
     // const creatWidgetForTopic = () => {
@@ -70,12 +70,12 @@ const WidgetList = (
     return(
         <div>
             <h2>
-                Widget List {myWidgets.length} {widget.id}
-                <i onClick={creatWidgetForTopic} className="fas fa-plus float-right"></i>
+                Widget List {widgets.length} {widget.id}
+                <i onClick={() => creatWidgetForTopic(topicId)} className="fas fa-plus float-right"></i>
             </h2>
             <ul className="list-group">
                 {
-                    myWidgets.map(_widget =>
+                    widgets.map(_widget =>
                         <li key={_widget.id} className="list-group-item">
                             {
                                 _widget.id === widget.id &&
@@ -89,7 +89,6 @@ const WidgetList = (
                             {
                                 _widget.id !== widget.id &&
                                 <>
-                                    {widget.title}
                                     <i onClick={() => setWidget(_widget)} className="fas fa-cog fa-2x float-right"></i>
                                 </>
                             }
@@ -97,6 +96,7 @@ const WidgetList = (
                             {
                                 _widget.type === "HEADING" &&
                                 <HeadingWidget
+                                    to={`topics/${topicId}`}
                                     setWidget={setWidget}
                                     editing={_widget.id === widget.id}
                                     widget={widget}/>

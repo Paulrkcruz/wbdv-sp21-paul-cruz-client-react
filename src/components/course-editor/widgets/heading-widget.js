@@ -4,6 +4,7 @@ import React from 'react'
 const HeadingWidget = ({widget, setWidget, editing}) => {
     return(
         <div>
+            {widget.title}
 
             {widget.size === 1 && <h1>{widget.text}</h1>}
             {widget.size === 2 && <h2>{widget.text}</h2>}

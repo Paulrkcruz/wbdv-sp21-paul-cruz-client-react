@@ -12,9 +12,9 @@ const ParagraphWidget = ({widget, setWidget, editing}) => {
             }
             {
                 !editing &&
-                    <p>
-                        {widget.text}
-                    </p>
+                <p>
+                    {widget.text}
+                </p>
             }
         </div>
     )
