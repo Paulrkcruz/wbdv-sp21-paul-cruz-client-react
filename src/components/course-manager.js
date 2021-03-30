@@ -5,6 +5,7 @@ import CourseEditor from "./course-editor";
 import {Route} from "react-router-dom";
 import courseService, {findAllCourses} from "../services/course-service";
 
+
 class CourseManager extends React.Component {
     state = {
         courses: [

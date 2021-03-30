@@ -12,9 +12,9 @@ export const creatWidgetForTopic = (tid, widget) =>
             "content-type": 'application/json'
         }
     }).then(response => response.json())
-// .then(response => response.json())
-// .then(actualWidget =>
-//     setWidgets(widgets => [...widgets, actualWidget]))
+        // .then(response => response.json())
+        // .then(actualWidget =>
+        //     setWidgets(widgets => [...widgets, actualWidget]))
 
 
 export const updateWidget = (id, widget) =>
@@ -25,18 +25,18 @@ export const updateWidget = (id, widget) =>
             "content-type": 'application/json'
         }
     }).then(response => response.json())
-//     .then(response => {
-//     setWidget({})
-//     setWidgets((widgets) => widgets.map(w => w.id !== id ? w : widget))
-// })
+    //     .then(response => {
+    //     setWidget({})
+    //     setWidgets((widgets) => widgets.map(w => w.id !== id ? w : widget))
+    // })
 
 export const deleteWidget = (id) =>
     fetch(`http://localhost:8080/api/widgets/${id}`,{
         method: "DELETE"
     }).then(response => response.json())
-//     .then(() => {
-//     setWidgets((widgets) => widgets.filter(w => w.id !== id))
-// })
+    //     .then(() => {
+    //     setWidgets((widgets) => widgets.filter(w => w.id !== id))
+    // })
 
 export default {
     findWidgetsForTopic, creatWidgetForTopic, updateWidget, deleteWidget
