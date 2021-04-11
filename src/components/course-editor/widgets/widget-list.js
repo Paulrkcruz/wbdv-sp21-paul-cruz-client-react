@@ -7,8 +7,6 @@ import ImageWidget from "./image-widget";
 
 
 const WidgetList = () => {
-
-    //TODO: move state management to widget-reducer
     const {topicId} = useParams()
     const [widgets, setWidgets] = useState([])
     const [widget, setWidget] =useState({})
