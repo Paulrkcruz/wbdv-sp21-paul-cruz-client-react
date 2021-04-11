@@ -4,6 +4,8 @@ import CourseGrid from "./components/course-grid";
 import CourseEditor from "./components/course-editor";
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./components/home"
+import QuizzesList from "./components/quizzes/quizzes-list";
+import Quiz from "./components/quizzes/quiz";
 
 
 function App() {
@@ -13,6 +15,12 @@ function App() {
                 <Route path="/" exact={true} component={Home}/>
                 <Route path={["/courses/table", "/courses/grid"]} component={CourseManager}/>
                 {/*<CourseManager/>*/}
+                <Route path="/courses/:courseId/quizzes" exact={true}>
+                    <QuizzesList/>
+                </Route>
+                <Route path="/courses/:courseId/quizzes/:quizId" exact={true}>
+                    <Quiz/>
+                </Route>
                 <Route path={[
                     "/courses/:layout/edit/",
                     "/courses/:layout/edit/:courseId",
